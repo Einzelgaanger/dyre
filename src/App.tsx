@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { motion } from 'framer-motion'
 import Hero from './components/Hero'
 import InfiniteWords from './components/InfiniteWords'
@@ -8,6 +8,16 @@ import './App.css'
 
 function App() {
   const [gameOpen, setGameOpen] = useState(false)
+
+  useEffect(() => {
+    if (gameOpen) {
+      const prev = document.body.style.overflow
+      document.body.style.overflow = 'hidden'
+      return () => {
+        document.body.style.overflow = prev
+      }
+    }
+  }, [gameOpen])
 
   return (
     <div className="app">

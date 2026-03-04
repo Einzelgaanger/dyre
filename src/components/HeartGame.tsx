@@ -84,14 +84,12 @@ export default function HeartGame({ onClose, onPlayAgain }: Props) {
                 className="game-heart"
                 style={{
                   left: `${h.x}%`,
-                  fontSize: '2rem',
-                }}
-                initial={{
                   top: '-30px',
-                  opacity: 1,
+                  fontSize: 'clamp(1.75rem, 5vw, 2rem)',
                 }}
+                initial={{ y: 0, opacity: 1 }}
                 animate={{
-                  top: '100%',
+                  y: 350,
                   opacity: 1,
                   transition: {
                     duration: h.duration,
@@ -102,6 +100,7 @@ export default function HeartGame({ onClose, onPlayAgain }: Props) {
                 exit={{ opacity: 0, scale: 1.5 }}
                 transition={{ exit: { duration: 0.2 } }}
                 onClick={() => catchHeart(h.id)}
+                onTouchStart={(e) => e.stopPropagation()}
               >
                 {h.symbol}
               </motion.div>

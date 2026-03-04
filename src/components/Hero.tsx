@@ -1,6 +1,8 @@
-import { motion } from 'framer-motion'
+import { motion, useReducedMotion } from 'framer-motion'
 
 export default function Hero() {
+  const reduceMotion = useReducedMotion()
+
   return (
     <motion.div
       className="hero"
@@ -9,13 +11,17 @@ export default function Hero() {
       transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
     >
       <motion.h1
-        animate={{
-          textShadow: [
-            '0 0 20px rgba(233, 30, 99, 0.4)',
-            '0 0 30px rgba(233, 30, 99, 0.6)',
-            '0 0 20px rgba(233, 30, 99, 0.4)',
-          ],
-        }}
+        animate={
+          reduceMotion
+            ? undefined
+            : {
+                textShadow: [
+                  '0 0 20px rgba(233, 30, 99, 0.4)',
+                  '0 0 30px rgba(233, 30, 99, 0.6)',
+                  '0 0 20px rgba(233, 30, 99, 0.4)',
+                ],
+              }
+        }
         transition={{ duration: 3, ease: 'easeInOut', repeat: Infinity }}
       >
         Sandy

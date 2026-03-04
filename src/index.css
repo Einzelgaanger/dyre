@@ -6,19 +6,30 @@
   --gold: #ff8a65;
   --text: #4a2c3a;
   --text-soft: #8e5a6e;
+  --safe-top: env(safe-area-inset-top, 0);
+  --safe-bottom: env(safe-area-inset-bottom, 0);
+  --safe-left: env(safe-area-inset-left, 0);
+  --safe-right: env(safe-area-inset-right, 0);
 }
 
 * {
   box-sizing: border-box;
 }
 
+html {
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
 body {
   margin: 0;
   min-height: 100vh;
+  min-height: calc(100vh + var(--safe-bottom));
   font-family: 'Quicksand', sans-serif;
   color: var(--text);
   background: linear-gradient(165deg, #ffe0ec 0%, #ffc4dd 25%, #ffb3d9 50%, #ff9ec9 75%, #ff8fbf 100%);
   overflow-x: hidden;
+  -webkit-overflow-scrolling: touch;
 }
 
 #root {
